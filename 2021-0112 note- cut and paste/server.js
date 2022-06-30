@@ -3,8 +3,7 @@
 
 
 
-// c11) mongoDB
-const MongoClient = require('mongodb').MongoClient;
+
 
 //c13) EJS
 app.set('view engine', 'ejs');
@@ -43,26 +42,6 @@ console.log('🦄🦄🦄🦄c10')
 
 
 // 🦄🦄c11 MongoDB 셋팅하기 (무료 호스팅도 받아보자)
-console.log('🦄🦄🦄🦄c11')
-
-/* 
-2) 구글에 MongoDB Atlas 검색 , 가입
-
-4) mongodb  라이브러리 설치
-
-npm install mongodb  
-
-6) 👆server.js 상단에 코드 추가 */
-
-/* 
-8) <●mongoDB - cluster - application code>복사해놓음
-(~~~~://디비계정아이디:디비계정패스워드~~~/데이터베이스이름~~~~) 
-
-mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority
-
--2) mongoDB연결되면, 
--4) 이 서버 연결해주셉 */
-
 
 // 🦄🦄c12 Database에 자료 저장하기, client.db('작명').collection('작명').insertOne(자료오브젝트, 콜백함수)
 console.log('🦄🦄🦄🦄c12')

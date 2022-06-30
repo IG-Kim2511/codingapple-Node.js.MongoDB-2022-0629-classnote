@@ -9,7 +9,8 @@ const app = express()
 const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({extended: true})) 
 
-
+// c28) mongoDB
+const MongoClient = require('mongodb').MongoClient;
 
 
 // 🦄🦄 terminal 명령어 정리 👉 html
@@ -32,7 +33,7 @@ app.use(bodyParser.urlencoded({extended: true}))
   $npm install body-parser 혹은 yarn add body-parser
 
   
-    🦄🦄c npm install mongodb 라이브러리 설치        
+    🦄🦄c28 npm install mongodb 라이브러리 설치        
     npm install mongodb
 
     🦄🦄c EJS 
@@ -108,15 +109,16 @@ terminal에서 ctrl + c
 // })
 
 
+//🍤 밑에 mongodb와 연결할때 쓰려고 코멘트 처리함 ---c28
+// app.listen(3000,function () {
+//     console.log('hello  3000')
+// })
 
 
 app.get('/pet', function(req요청, res응답) {        //-2)  -4)
     res응답.send('펫용품 사시오')           //-3)
   })
   
-app.listen(3000,function () {
-    console.log('hello  3000')
-})
 
 
 // 🦄🦄c20 서버에서 index.html파일전송하기, Nodemon으로 자동화, 설치오류해결 powershell관리자모드
@@ -217,3 +219,33 @@ app.post('/add',function(req요청,res응답){    //4-2)
 
 
 // 🦄🦄c28 MongoDB 셋팅하기 (무료 호스팅도 받아보자)
+
+console.log('🦄🦄🦄🦄c11')
+
+/* 
+2) 구글에 MongoDB Atlas 검색 , 가입
+
+4) mongodb  라이브러리 설치
+
+npm install mongodb  
+
+6) 👆server.js 상단에 코드 추가 */
+
+/* 
+8) <●mongoDB - cluster - application code>복사해놓음
+(~~~~://디비계정아이디:디비계정패스워드~~~/데이터베이스이름~~~~) 
+
+mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority
+
+-2) mongoDB연결되면, 
+-4) 이 서버 연결해주셉 */
+
+// 🍤url, password
+
+
+MongoClient.connect('mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority', function(에러, client){ //8-2)
+  
+      app.listen(3000,function () {
+        console.log('hello  3000')
+    })
+})
