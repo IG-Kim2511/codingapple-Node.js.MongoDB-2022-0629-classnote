@@ -1,4 +1,15 @@
 
+/* 🍀 Server.js 상단 코드 */
+
+// c18
+const express = require('express')
+const app = express()
+
+// c24-5)
+const bodyParser= require('body-parser')
+app.use(bodyParser.urlencoded({extended: true})) 
+
+
 
 
 // 🦄🦄 terminal 명령어 정리 👉 html
@@ -17,7 +28,7 @@
 
   $nodemon server.js 
 
-    🦄🦄c body-parser 라이브러리 설치
+    🦄🦄c24 body-parser 라이브러리 설치
   $npm install body-parser 혹은 yarn add body-parser
 
   
@@ -50,9 +61,9 @@ $npm install express
 
 // 🦄🦄c18 express로 서버오픈공식, node server.js, get(주소, (req,res)={} ), send('글자')
 
-/* (express) 서버오픈 기본공식 
+/* (express) 서버오픈 기본공식  👉 server.js 상단
 
-2) 👆 server.js 상단에 코드 추가, express 라이브러리 첨부와 사용 
+2) 👉 server.js 상단에 코드 추가, express 라이브러리 첨부와 사용 
 
 4) app.listen()은 원하는 포트에 서버를 오픈하는 문법이라고 보시면 됩니다. 
 
@@ -97,8 +108,6 @@ terminal에서 ctrl + c
 // })
 
 
-const express = require('express')
-const app = express()
 
 
 app.get('/pet', function(req요청, res응답) {        //-2)  -4)
@@ -151,10 +160,6 @@ app.get('/style.css', function(req, res) {
 
 
 
-
-
-
-
 // 🦄🦄c24 POST요청 app.post('/add',(res,req)=>{}), body-parser (입력한 데이터를 서버에 전송하는 법)
 // 👉write.html
 console.log('🦄🦄🦄🦄c9')
@@ -186,8 +191,7 @@ app.get('/write',(req요청,res응답)=>{       //2, 2-1)
 
 터미널을 켜서 npm install body-parser 혹은 yarn add body-parser를 하도록 합시다. 
 
-그리고 여러분 server.js 위쪽에 다음 코드를 추가합니다.
-👆
+👉server.js 상단에 추가
 const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({extended: true})) 
 
@@ -199,13 +203,13 @@ input작성 후 submit click한때 ( 누군가가 /add 경로로 post 요청을 
 
 app.post('/add',function(req요청,res응답){    //4-2)
 
- res응답.send('전송완료했어용')                       //4-3)
+  res응답.send('전송완료했어용')                       //4-3)
+    
+  console.log(req요청.body)          //5-4)
+  console.log(req요청.body.ig-title)          //5-4)
+  console.log(req요청.body.ig-data)          //5-4)
 
- console.log(req요청.body)          //5-4)
- console.log(req요청.body.title)          //5-4)
- console.log(req요청.body.data)          //5-4)
-
-//  DB에 저장하기 👉 다음시간에....
+  //  DB에 저장하기 👉 다음시간에....
 })
 
 

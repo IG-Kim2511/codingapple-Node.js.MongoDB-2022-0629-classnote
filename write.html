@@ -41,19 +41,29 @@
     <h4 class="container mt-4"><strong>글 작성페이지</strong></h4>
 
     <div class="container mt-3">
-      <!-- c9-4-1)  /add 경로로, POST요청함 👉server.js -->
+
+      <!--🦄🥒 c24-4-1)  /add 경로로, POST요청함 👉server.js     
+            action="/add" method="POST"
+        -->
+
       <form action="/add" method="POST">
+
+
         <div class="form-group">
           <label>오늘의 할일</label>
 
-          <!--  c9-4-1)   -->
-          <input type="text" class="form-control" name="title" />
+          <!--  🦄🥒c24-4-1) 
+            name="ig-title" 
+            -->
+          <input type="text" class="form-control" name="ig-title" />
         </div>
         <div class="form-group">
           <label>날짜</label>
 
-          <!--   c9-4-1)  -->
-          <input type="text" class="form-control" name="data" />
+          <!--  🦄🥒 c24-4-1) 
+                name="ig-data" />       
+            -->
+          <input type="text" class="form-control" name="ig-data" />
         </div>
         <button type="submit" class="btn btn-outline-secondary">Submit</button>
       </form>

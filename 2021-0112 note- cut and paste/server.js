@@ -1,10 +1,7 @@
 
-/*⭐server.js 상단 코드 */
+/*🍀server.js 상단 코드 */
 
 
-// c9-5)
-const bodyParser= require('body-parser')
-app.use(bodyParser.urlencoded({extended: true})) 
 
 // c11) mongoDB
 const MongoClient = require('mongodb').MongoClient;
@@ -38,7 +35,6 @@ app.use(methodOverride('_method'))
 
 
 
-// 🦄🦄c8 bootstrap
 
 
 // 🦄🦄c10 REST API 
