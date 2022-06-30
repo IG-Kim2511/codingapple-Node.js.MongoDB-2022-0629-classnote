@@ -142,11 +142,72 @@ app.get('/', function(req요청, res응답) {               //2)
     res응답.sendFile(__dirname + '/index.html')       //4)
 })   
 
-// 6) style.css가져오기 (구글검색)
+// 6) css 적용하기 (me...구글검색) ⚡
 
 app.get('/style.css', function(req, res) {
     res.sendFile(__dirname + "/" + "style.css");
-  });
+});
+
+
+
+
+
+
+
+
+// 🦄🦄c24 POST요청 app.post('/add',(res,req)=>{}), body-parser (입력한 데이터를 서버에 전송하는 법)
+// 👉write.html
+console.log('🦄🦄🦄🦄c9')
+
+
+/*  2) arrow function 사용 가능
+2-1) /write접속..
+2-2) write.html보내줌  */
+
+app.get('/write',(req요청,res응답)=>{       //2, 2-1)
+  res응답.sendFile(__dirname + '/write.html')       //2-2)
+});
+
+
+/* 4)
+😄알고리즘 pseudo-coding
+-1. 👉write.html   👉      <form action="/add" method="POST">  코딩  , 서버에서 input 구분하기 위해 name태그 넣음
+-2. 어떤 사람이 /add 경로(html에 지정한 action="")로 , POST요청 하면, 
+-3. ??을 해주세요 */
+
+
+/* 5)form 데이터를 서버로 전송하기 - body-parser 설치 
+( http://expressjs.com/en/resources/middleware/body-parser.html )
+
+5-2)
+4)까지만 해도 데이터가 잘 전송되긴 하는데, (전송된 데이터는 'req요청'파라미터에 저장됨)
+
+전송된 데이터 사용하기 : body-parser라는 라이브러리가 있어야, 여러분이 보낸 데이터들 처리가 쉽게 가능함.
+
+터미널을 켜서 npm install body-parser 혹은 yarn add body-parser를 하도록 합시다. 
+
+그리고 여러분 server.js 위쪽에 다음 코드를 추가합니다.
+👆
+const bodyParser= require('body-parser')
+app.use(bodyParser.urlencoded({extended: true})) 
+
+
+5-4)
+input작성 후 submit click한때 ( 누군가가 /add 경로로 post 요청을 할 때 ) , 터미널 콘솔창에 요청.body가 출력됨
+
+요청.body는 여러분이 폼에 입력한 데이터가 들어가 있음.   */
+
+app.post('/add',function(req요청,res응답){    //4-2)
+
+ res응답.send('전송완료했어용')                       //4-3)
+
+ console.log(req요청.body)          //5-4)
+ console.log(req요청.body.title)          //5-4)
+ console.log(req요청.body.data)          //5-4)
+
+//  DB에 저장하기 👉 다음시간에....
+})
+
 
 
 
