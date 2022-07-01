@@ -62,7 +62,7 @@ $npm install express
 
 // 🦄🦄c18 express로 서버오픈공식, node server.js, get(주소, (req,res)={} ), send('글자')
 
-/* (express) 서버오픈 기본공식  👉 server.js 상단
+/*👉 server.js 상단 -  (express) 서버오픈 기본공식  
 
 2) 👉 server.js 상단에 코드 추가, express 라이브러리 첨부와 사용 
 
@@ -242,10 +242,63 @@ mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites
 
 // 🍤url, password
 
+var url = 'mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
-MongoClient.connect('mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority', function(에러, client){ //8-2)
+MongoClient.connect(url, function(에러, client){ //8-2)
   
       app.listen(3000,function () {
         console.log('hello  3000')
     })
+})
+
+
+
+
+// 🦄🦄c30 Database에 자료 저장하기, client.db('작명').collection('작명').insertOne(자료오브젝트, 콜백함수)
+console.log('🦄🦄🦄🦄c12')
+/* 
+1) mongoDB 사이트 
+clusters ->collection ->
+ database는 하나의 폴더, collection은 하나의 엑셀파일이라고 생각하면 딱 맞습니다. 
+
+2) 전체코드 :  client.db('작명').collection('작명').insertOne(자료오브젝트, 콜백함수)
+
+.client.database폴더의
+
+.collection파일에 
+
+.insertOne함수 적용
+
+.insertOne(저장할 데이터, 그 이후 실행할 콜백함수)
+
+
+4) var db변수화 사용해서 코딩  
+
+6)  _id 부여하기    */
+
+
+var db;   //c12-4)
+
+MongoClient.connect('mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority', function(에러, client){ //8-2)
+  
+  if (에러) return console.log(에러);
+
+  // c12-2)
+  client.db('database-folder1').collection('collection-file1').insertOne( {이름 : 'John', _id : 100} , function(에러, 결과){
+    console.log('저장완료'); 
+    });
+
+  
+  // c12-4)
+  db = client.db('database-folder1');
+
+  db.collection('collection-file1').insertOne( {이름 : 'John2', _id : 200} , function(에러, 결과){
+  console.log('저장완료'); 
+	});
+
+
+  // c6-4) 서버띄우는 코드 여기로 옮기기        , 8-4)
+  app.listen(8080, function(){
+    console.log('listening on 8080')
+  });
 })
