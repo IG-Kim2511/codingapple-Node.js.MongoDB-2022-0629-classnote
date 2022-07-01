@@ -211,8 +211,8 @@ app.post('/add',function(req요청,res응답){    //4-2)
   res응답.send('전송완료했어용')                       //4-3)
     
   console.log(req요청.body)          //5-4)
-  console.log(req요청.body.ig-title)          //5-4)
-  console.log(req요청.body.ig-data)          //5-4)
+  console.log(req요청.body.ig_title)          //5-4)
+  console.log(req요청.body.ig_data)          //5-4)
 
   //  DB에 저장하기 👉 다음시간에....
 })
@@ -320,6 +320,21 @@ client.connect(err => {
 
 
 
+  // 🦄c32. app.post('/add',
+
+    app.post('/add', function(요청, 응답){    //2-2)
+      응답.send('전송완료13');
+      console.log(요청.body.ig_title);
+      console.log(요청.body.ig_data);
+      
+      //2-4)
+      collection.insertOne( { 제목 : 요청.body.ig_title, 날짜 : 요청.body.ig_data } , function(){    
+        console.log('저장완료13-2');
+      });
+    });
+
+
+
   // perform actions on the collection object
   client.close();
 
@@ -365,11 +380,11 @@ client.connect(err => {
 
 //     // app.post('/add', function(요청, 응답){    //2-2)
 //     //   응답.send('전송완료13');
-//     //   console.log(요청.body.ig-title);
-//     //   console.log(요청.body.ig-data);
+//     //   console.log(요청.body.ig_title);
+//     //   console.log(요청.body.ig_data);
       
 //     //   //2-4)
-//     //   db.collection('post').insertOne( { 제목 : 요청.body.ig-title, 날짜 : 요청.body.ig-data } , function(){    
+//     //   db.collection('post').insertOne( { 제목 : 요청.body.ig_title, 날짜 : 요청.body.ig_data } , function(){    
 //     //     console.log('저장완료13-2');
 //     //   });
 //     // });
