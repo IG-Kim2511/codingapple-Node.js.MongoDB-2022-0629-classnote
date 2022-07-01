@@ -243,11 +243,11 @@ mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites
 -2) mongoDB연결되면, 
 -4) 이 서버 연결해주셉 */
 
-// 🍤url, password
+// uri, password
 
-// var url = 'mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority';
+// var uri = 'mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
-// MongoClient.connect(url, function(에러, client){ //8-2)
+// MongoClient.connect(uri, function(에러, client){ //8-2)
   
 //       app.listen(3000,function () {
 //         console.log('c28 hello  3000')
@@ -269,13 +269,13 @@ console.log('🦄🦄🦄🦄c30')
   6)  _id 부여하기   
 */
 
-// var url = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/todoapp?retryWrites=true&w=majority";
+// var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/todoapp?retryWrites=true&w=majority";
 
-// var url = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
+// var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
 
 // var db;   //c30-4)
 
-// MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(에러,  p_client){ //8-2)
+// MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, function(에러,  p_client){ //8-2)
   
 //     if (에러) {
 //       return console.log(에러);
@@ -314,9 +314,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 client.connect(err => {
   const collection = client.db("todoapp").collection("post");
 
-
-
-    collection.insertOne({이름:'John', _id:100} , function (에러, 결과) {
+  collection.insertOne({ name: "Company Inc", address: "Highway 37" }, function (에러, 결과) {
     console.log('c30 finished')    
   });
 
