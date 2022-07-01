@@ -9,8 +9,6 @@ const app = express()
 const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({extended: true})) 
 
-// c28) mongoDB
-// const MongoClient = require('mongodb').MongoClient;
 
 
 // 🦄🦄 terminal 명령어 정리 👉 html
@@ -206,17 +204,21 @@ input작성 후 submit click한때 ( 누군가가 /add 경로로 post 요청을 
 
 요청.body는 여러분이 폼에 입력한 데이터가 들어가 있음.   */
 
-app.post('/add',function(req요청,res응답){    //4-2)
 
-  res응답.send('전송완료했어용')                       //4-3)
+// 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
+
+// app.post('/add',function(req요청,res응답){    //4-2)
+
+//   res응답.send('c24 전송완료했어용')                       //4-3)
     
-  console.log(req요청.body)          //5-4)
-  console.log(req요청.body.ig_title)          //5-4)
-  console.log(req요청.body.ig_data)          //5-4)
+//   console.log(req요청.body)          //5-4)
+//   console.log(req요청.body.ig_title)          //5-4)
+//   console.log(req요청.body.ig_data)          //5-4)
 
-  //  DB에 저장하기 👉 다음시간에....
-})
+//   //  DB에 저장하기 👉 다음시간에....
+// })
 
+// 🌊 실습코드 끝------
 
 
 
@@ -243,6 +245,8 @@ mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites
 -2) mongoDB연결되면, 
 -4) 이 서버 연결해주셉 */
 
+// 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
+
 // uri, password
 
 // var uri = 'mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority';
@@ -255,7 +259,7 @@ mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites
     
 // })
 
-
+// 🌊 실습코드 끝------
 
 
 // 🦄🦄c30 Database에 자료 저장하기, client.db('작명').collection('작명').insertOne(자료오브젝트, 콜백함수)
@@ -269,13 +273,17 @@ console.log('🦄🦄🦄🦄c30')
   6)  _id 부여하기   
 */
 
-// var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/todoapp?retryWrites=true&w=majority";
+// 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
+
+// const MongoClient = require('mongodb').MongoClient;
+
+// // var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/todoapp?retryWrites=true&w=majority";
 
 // var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
 
 // var db;   //c30-4)
 
-// MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, function(에러,  p_client){ //8-2)
+// MongoClient.connect(uri, function(에러,  p_client){ //8-2)
   
 //     if (에러) {
 //       return console.log(에러);
@@ -293,27 +301,34 @@ console.log('🦄🦄🦄🦄c30')
 //   });
 
 
-
-
 //   // // c30-4) 서버띄우는 코드 여기로 옮기기        , 8-4)
 //   app.listen(3000, function(){
 //     console.log('c30 listening on 3000')
 //   });
 // })
 
+// // 🌊 실습코드 끝------
+
 
 
 // 🍀 mongo db 예제문 복붙 - 에러는 안나는데, post에 데이터 추가 안됨
+// https://www.w3schools.com/nodejs/nodejs_mongodb_createcollection.asp
+
+// 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-const uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
+var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+var client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
 client.connect(err => {
-  const collection = client.db("todoapp").collection("post");
 
+  //  client.db("todo0701").collection("post0701");
+  var collection = client.db("todo").collection("post");
+
+  // insertOne
   collection.insertOne({ name: "Company Inc", address: "Highway 37" }, function (에러, 결과) {
     console.log('c30 finished')    
   });
@@ -323,27 +338,26 @@ client.connect(err => {
   // 🦄c32. app.post('/add',
 
     app.post('/add', function(요청, 응답){    //2-2)
-      응답.send('전송완료13');
+      응답.send('전송완료 c32.');
       console.log(요청.body.ig_title);
       console.log(요청.body.ig_data);
       
-      //2-4)
+      //2-4)insertOne
       collection.insertOne( { 제목 : 요청.body.ig_title, 날짜 : 요청.body.ig_data } , function(){    
-        console.log('저장완료13-2');
+        console.log('저장완료 c32-2');
       });
     });
 
 
-
   // perform actions on the collection object
-  client.close();
+  // client.close();
 
   app.listen(3000, function(){
     console.log('c30 listening on 3000')
   });
 });
 
-
+// 🌊 실습코드 끝------
 
 
 
