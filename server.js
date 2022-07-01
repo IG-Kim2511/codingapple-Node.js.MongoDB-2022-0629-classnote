@@ -10,7 +10,7 @@ const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({extended: true})) 
 
 // c28) mongoDB
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
 
 
 // 🦄🦄 terminal 명령어 정리 👉 html
@@ -269,38 +269,66 @@ console.log('🦄🦄🦄🦄c30')
   6)  _id 부여하기   
 */
 
-var url = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority";
+// var url = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/todoapp?retryWrites=true&w=majority";
 
-var db;   //c30-4)
+// var url = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
 
-MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(에러,  p_client){ //8-2)
+// var db;   //c30-4)
+
+// MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(에러,  p_client){ //8-2)
   
-    if (에러) {
-      return console.log(에러);
-    }
+//     if (에러) {
+//       return console.log(에러);
+//     }
 
-  // c30-2)
-  // database.... 'todoapp' 에 연결
-  db = p_client.db('todoapp');
+//   // c30-2)
+//   // database.... 'todoapp' 에 연결
+//   db = p_client.db('todoapp');
 
-  // collecton....'post' 에 연결
-  // .insertOne함수 : .insertOne(저장할 데이터, 그 이후 실행할 콜백함수)  👉 mongoDB에 가면 저장된 데이터 확인됨
+//   // collecton....'post' 에 연결
+//   // .insertOne함수 : .insertOne(저장할 데이터, 그 이후 실행할 콜백함수)  👉 mongoDB에 가면 저장된 데이터 확인됨
 
-  db.collection('post').insertOne({이름:'John', _id:100} , function (에러, 결과) {
+//   db.collection('post').insertOne({이름:'John', _id:100} , function (에러, 결과) {
+//     console.log('c30 finished')    
+//   });
+
+
+
+
+//   // // c30-4) 서버띄우는 코드 여기로 옮기기        , 8-4)
+//   app.listen(3000, function(){
+//     console.log('c30 listening on 3000')
+//   });
+// })
+
+
+
+// 🍀 mongo db 예제문 복붙 - 에러는 안나는데, post에 데이터 추가 안됨
+const { MongoClient, ServerApiVersion } = require('mongodb');
+
+const uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
+
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+
+client.connect(err => {
+  const collection = client.db("todoapp").collection("post");
+
+
+
+    collection.insertOne({이름:'John', _id:100} , function (에러, 결과) {
     console.log('c30 finished')    
   });
 
 
 
+  // perform actions on the collection object
+  client.close();
 
-  // // c30-4) 서버띄우는 코드 여기로 옮기기        , 8-4)
   app.listen(3000, function(){
     console.log('c30 listening on 3000')
   });
-})
-
-
-
+});
 
 
 
