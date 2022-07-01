@@ -44,7 +44,10 @@ const MongoClient = require('mongodb').MongoClient;
           
   */
 
-//🦄🦄 express홈페이지 사용법 참고 https://www.npmjs.com/package/express
+//🦄🦄 참고 : w3school - node.js
+
+//🦄🦄 참고 : npmjs.com
+
 
 // 🦄🦄c16 npm에러해결, package.json, npm init, npm install express(Node.js, Express라이브러리 설치)
 console.log('🦄🦄🦄🦄c5')
@@ -242,63 +245,105 @@ mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites
 
 // 🍤url, password
 
-var url = 'mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority';
+// var url = 'mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
-MongoClient.connect(url, function(에러, client){ //8-2)
+// MongoClient.connect(url, function(에러, client){ //8-2)
   
-      app.listen(3000,function () {
-        console.log('hello  3000')
-    })
-})
+//       app.listen(3000,function () {
+//         console.log('c28 hello  3000')
+//     })
+    
+// })
 
 
 
 
 // 🦄🦄c30 Database에 자료 저장하기, client.db('작명').collection('작명').insertOne(자료오브젝트, 콜백함수)
-console.log('🦄🦄🦄🦄c12')
+console.log('🦄🦄🦄🦄c30')
 /* 
-1) mongoDB 사이트 
-clusters ->collection ->
- database는 하나의 폴더, collection은 하나의 엑셀파일이라고 생각하면 딱 맞습니다. 
+  1) mongoDB 사이트 
+  clusters ->collection -> database는 하나의 폴더, collection은 하나의 엑셀파일이라고 생각하면 딱 맞습니다. 
 
-2) 전체코드 :  client.db('작명').collection('작명').insertOne(자료오브젝트, 콜백함수)
+  4) var db변수화 사용해서 코딩  
 
-.client.database폴더의
+  6)  _id 부여하기   
+*/
 
-.collection파일에 
+var url = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
-.insertOne함수 적용
+var db;   //c30-4)
 
-.insertOne(저장할 데이터, 그 이후 실행할 콜백함수)
-
-
-4) var db변수화 사용해서 코딩  
-
-6)  _id 부여하기    */
-
-
-var db;   //c12-4)
-
-MongoClient.connect('mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority', function(에러, client){ //8-2)
+MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(에러,  p_client){ //8-2)
   
-  if (에러) return console.log(에러);
+    if (에러) {
+      return console.log(에러);
+    }
 
-  // c12-2)
-  client.db('database-folder1').collection('collection-file1').insertOne( {이름 : 'John', _id : 100} , function(에러, 결과){
-    console.log('저장완료'); 
-    });
+  // c30-2)
+  // database.... 'todoapp' 에 연결
+  db = p_client.db('todoapp');
 
-  
-  // c12-4)
-  db = client.db('database-folder1');
+  // collecton....'post' 에 연결
+  // .insertOne함수 : .insertOne(저장할 데이터, 그 이후 실행할 콜백함수)  👉 mongoDB에 가면 저장된 데이터 확인됨
 
-  db.collection('collection-file1').insertOne( {이름 : 'John2', _id : 200} , function(에러, 결과){
-  console.log('저장완료'); 
-	});
+  db.collection('post').insertOne({이름:'John', _id:100} , function (에러, 결과) {
+    console.log('c30 finished')    
+  });
 
 
-  // c6-4) 서버띄우는 코드 여기로 옮기기        , 8-4)
-  app.listen(8080, function(){
-    console.log('listening on 8080')
+
+
+  // // c30-4) 서버띄우는 코드 여기로 옮기기        , 8-4)
+  app.listen(3000, function(){
+    console.log('c30 listening on 3000')
   });
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   //🦄🦄c32 HTML에 DB데이터 넣는 법 1, EJS 파일 만들기 
+//   console.log('🦄🦄🦄🦄c13')
+//   // 👉views/list.ejs
+
+//   /*2) 숙제해설 :
+//   -2) 누군가 /add 경로로 POST 요청을 하면, 폼에 입력된 자료를 2개가 서버로 도착합니다.
+
+//   -4) 이 때 자료 2개를 post라는 이름의 collection에 저장해보도록 합시다.
+
+//   { 제목 : ‘어쩌구’, 날짜 : ‘어쩌구’ } 이런 Object 자료형으로 저장하시면 되겠습니다.
+
+//   참고 : c9 .. post  */
+
+//     // app.post('/add', function(요청, 응답){    //2-2)
+//     //   응답.send('전송완료13');
+//     //   console.log(요청.body.ig-title);
+//     //   console.log(요청.body.ig-data);
+      
+//     //   //2-4)
+//     //   db.collection('post').insertOne( { 제목 : 요청.body.ig-title, 날짜 : 요청.body.ig-data } , function(){    
+//     //     console.log('저장완료13-2');
+//     //   });
+//     // });
