@@ -42,7 +42,9 @@ app.use(bodyParser.urlencoded({extended: true}))
           
   */
 
-//🦄🦄 참고 : w3school - node.js
+ //🦄🦄 참고 : w3school - node.js
+ 
+ //🦄🦄 참고 : https://www.mongodb.com/docs/manual/reference/method/db.collection.aggregate/
 
 //🦄🦄 참고 : npmjs.com
 
