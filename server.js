@@ -9,6 +9,8 @@ const app = express()
 const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({extended: true})) 
 
+// c30)
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 
 // 🦄🦄 terminal 명령어 정리 👉 html
@@ -262,24 +264,31 @@ mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites
 // 🌊 실습코드 끝------
 
 
+
+
+
+
 // 🦄🦄c30 Database에 자료 저장하기, client.db('작명').collection('작명').insertOne(자료오브젝트, 콜백함수)
-console.log('🦄🦄🦄🦄c30')
-/* 
-  1) mongoDB 사이트 
-  clusters ->collection -> database는 하나의 폴더, collection은 하나의 엑셀파일이라고 생각하면 딱 맞습니다. 
+// (인증코드 에러남. 자료추가도 안됨)
 
-  4) var db변수화 사용해서 코딩  
 
-  6)  _id 부여하기   
-*/
+// console.log('🦄🦄🦄🦄c30')
+// /* 
+//   1) mongoDB 사이트 
+//   clusters ->collection -> database는 하나의 폴더, collection은 하나의 엑셀파일이라고 생각하면 딱 맞습니다. 
 
-// 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
+//   4) var db변수화 사용해서 코딩  
 
-// const MongoClient = require('mongodb').MongoClient;
+//   6)  _id 부여하기   
+// */
 
-// // var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/todoapp?retryWrites=true&w=majority";
+// // 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
 
-// var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
+//👉상단배치 const MongoClient = require('mongodb').MongoClient;
+
+// var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/todoapp?retryWrites=true&w=majority";
+
+// // var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
 
 // var db;   //c30-4)
 
@@ -307,25 +316,26 @@ console.log('🦄🦄🦄🦄c30')
 //   });
 // })
 
-// // 🌊 실습코드 끝------
+// // // 🌊 실습코드 끝------
 
 
 
-// 🍀 mongo db 예제문 복붙 - 에러는 안나는데, post에 데이터 추가 안됨
+// 🦄🦄c30-2. mongo db 예제문 복붙 - 에러는 안나는데, post에 데이터 추가 안됨
 // https://www.w3schools.com/nodejs/nodejs_mongodb_createcollection.asp
 
 // 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+//👉상단배치 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
 
+// var client
 var client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-
+// connect
 client.connect(err => {
 
-  //  client.db("todo0701").collection("post0701");
+  // client.db("todo").collection("post");
   var collection = client.db("todo").collection("post");
 
   // insertOne
@@ -350,7 +360,7 @@ client.connect(err => {
 
 
   // perform actions on the collection object
-  // client.close();
+  client.close();
 
   app.listen(3000, function(){
     console.log('c30 listening on 3000')
@@ -402,3 +412,4 @@ client.connect(err => {
 //     //     console.log('저장완료13-2');
 //     //   });
 //     // });
+
