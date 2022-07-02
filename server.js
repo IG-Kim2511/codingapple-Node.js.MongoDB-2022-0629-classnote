@@ -9,8 +9,6 @@ const app = express()
 const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({extended: true})) 
 
-// c30)
-const { MongoClient, ServerApiVersion } = require('mongodb');
 
 
 // 🦄🦄 terminal 명령어 정리 👉 codingapple-Node.js.MongoDB-2022-0629-classnote폴더...server.js
@@ -33,10 +31,10 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
   $npm install body-parser 혹은 yarn add body-parser
 
   
-    🦄🦄c28 npm install mongodb 라이브러리 설치        
+    🦄🦄c28 mongodb 라이브러리 설치        
     npm install mongodb
 
-    🦄🦄c EJS 
+    🦄🦄c32 EJS 
     npm install ejs
 
     🦄🦄c method-override
