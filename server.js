@@ -122,7 +122,7 @@ terminal에서 ctrl + c
 //     console.log('hello  3000')
 // })
 
-
+// get(), send()
 app.get('/pet', function(req요청, res응답) {        //-2)  -4)
     res응답.send('펫용품 사시오')           //-3)
   })
@@ -157,6 +157,7 @@ yarn add global nodemon
 
 4-4) __dirname은 현재 파일의 경로를 뜻합니다. */
 
+// sendFile()
 app.get('/', function(req요청, res응답) {               //2)
     res응답.sendFile(__dirname + '/index.html')       //4)
 })   
@@ -214,16 +215,17 @@ input작성 후 submit click한때 ( 누군가가 /add 경로로 post 요청을 
 
 // 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
 
-// app.post('/add',function(req요청,res응답){    //4-2)
+// post() , req요청.body.ig_title
+app.post('/add',function(req요청,res응답){    //4-2)
 
-//   res응답.send('c24 전송완료했어용')                       //4-3)
+  res응답.send('c24 전송완료했어용')                       //4-3)
     
-//   console.log(req요청.body)          //5-4)
-//   console.log(req요청.body.ig_title)          //5-4)
-//   console.log(req요청.body.ig_data)          //5-4)
+  console.log(req요청.body)          //5-4)
+  console.log(req요청.body.ig_title)          //5-4)
+  console.log(req요청.body.ig_data)          //5-4)
 
-//   //  DB에 저장하기 👉 다음시간에....
-// })
+  //  DB에 저장하기 👉 다음시간에....
+})
 
 // 🌊 실습코드 끝------
 
