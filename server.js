@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 
-// 🦄🦄 terminal 명령어 정리 👉 html
+// 🦄🦄 terminal 명령어 정리 👉 codingapple-Node.js.MongoDB-2022-0629-classnote폴더...server.js
 /* 
  🦄🦄c12 express 라이브러리 설치
         $npm init
@@ -76,20 +76,25 @@ listen() 함수 안엔 두개의 파라미터가 필요합니다.
 listen(서버를 오픈할 포트번호, function(){서버 오픈시 실행할 코드})
 
 
-app.listen(8080, function() {   
-    console.log('listening on 8080')
-})
-
-(👉 c28 mongoDB코드로 옮김)
 
 */
 
+// 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
+// (👉 c28 mongoDB코드로 옮김)
+
+// app.listen(3000, function() {   
+//   console.log('listening on 3000')
+// })
+
+// 🌊 실습코드 끝------
+
+
 /* 
-6) node server.js / localhost:8080
+6) node server.js / localhost:3000
 
 터미널에서 node server.js를 입력하면 서버가 뜹니다.
 
-브라우저에서 localhost:8080  접속하면 확인가능합니다. 
+브라우저에서 localhost:3000  접속하면 확인가능합니다. 
 
 8) 서버 끄기 
 terminal에서 ctrl + c
@@ -97,12 +102,12 @@ terminal에서 ctrl + c
 
 /* 10) get(주소, ()={} ), send('글자')
 
--2) 누군가가 localhost:8080/pet으로 방문하면,
+-2) 누군가가 localhost:3000/pet으로 방문하면,
 -3) 안내문 띄우기
 
 -4) get안의 파라미터 eng이름 : (request, response) (req,res) 주로 사용함
 
-브라우저 켜서 localhost:8080/pet  접속하면 펫용품 사라는 안내문이 뜨죠? */
+브라우저 켜서 localhost:3000/pet  접속하면 펫용품 사라는 안내문이 뜨죠? */
 
 
 // 12) 사용자가 / 경로로 접속시 (/ 하나만 있으면 홈페이지입니다)
@@ -251,165 +256,17 @@ mongodb+srv://iikim2511:1234qwer@cluster0.o0asn.mongodb.net/<dbname>?retryWrites
 
 // uri, password
 
-// var uri = 'mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority';
+var uri = 'mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
-// MongoClient.connect(uri, function(에러, client){ //8-2)
+MongoClient.connect(uri, function(에러, client){ //8-2)
   
-//       app.listen(3000,function () {
-//         console.log('c28 hello  3000')
-//     })
-    
-// })
+      app.listen(3000,function () {
+        console.log('c28 hello  3000')
+    })    
+})
 
 // 🌊 실습코드 끝------
 
 
 
-
-
-
-// 🦄🦄c30 Database에 자료 저장하기, client.db('작명').collection('작명').insertOne(자료오브젝트, 콜백함수)
-// (인증코드 에러남. 자료추가도 안됨)
-
-
-// console.log('🦄🦄🦄🦄c30')
-// /* 
-//   1) mongoDB 사이트 
-//   clusters ->collection -> database는 하나의 폴더, collection은 하나의 엑셀파일이라고 생각하면 딱 맞습니다. 
-
-//   4) var db변수화 사용해서 코딩  
-
-//   6)  _id 부여하기   
-// */
-
-// // 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
-
-//👉상단배치 const MongoClient = require('mongodb').MongoClient;
-
-// var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.o0asn.mongodb.net/todoapp?retryWrites=true&w=majority";
-
-// // var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
-
-// var db;   //c30-4)
-
-// MongoClient.connect(uri, function(에러,  p_client){ //8-2)
-  
-//     if (에러) {
-//       return console.log(에러);
-//     }
-
-//   // c30-2)
-//   // database.... 'todoapp' 에 연결
-//   db = p_client.db('todoapp');
-
-//   // collecton....'post' 에 연결
-//   // .insertOne함수 : .insertOne(저장할 데이터, 그 이후 실행할 콜백함수)  👉 mongoDB에 가면 저장된 데이터 확인됨
-
-//   db.collection('post').insertOne({이름:'John', _id:100} , function (에러, 결과) {
-//     console.log('c30 finished')    
-//   });
-
-
-//   // // c30-4) 서버띄우는 코드 여기로 옮기기        , 8-4)
-//   app.listen(3000, function(){
-//     console.log('c30 listening on 3000')
-//   });
-// })
-
-// // // 🌊 실습코드 끝------
-
-
-
-// 🦄🦄c30-2. mongo db 예제문 복붙 - 에러는 안나는데, post에 데이터 추가 안됨
-// https://www.w3schools.com/nodejs/nodejs_mongodb_createcollection.asp
-
-// 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
-
-//👉상단배치 const { MongoClient, ServerApiVersion } = require('mongodb');
-
-var uri = "mongodb+srv://iikim2511:ingyum123@cluster0.qqllo.mongodb.net/?retryWrites=true&w=majority";
-
-// var client
-var client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
-// connect
-client.connect(err => {
-
-  // client.db("todo").collection("post");
-  var collection = client.db("todo").collection("post");
-
-  // insertOne
-  collection.insertOne({ name: "Company Inc", address: "Highway 37" }, function (에러, 결과) {
-    console.log('c30 finished')    
-  });
-
-
-
-  // 🦄c32. app.post('/add',
-
-    app.post('/add', function(요청, 응답){    //2-2)
-      응답.send('전송완료 c32.');
-      console.log(요청.body.ig_title);
-      console.log(요청.body.ig_data);
-      
-      //2-4)insertOne
-      collection.insertOne( { 제목 : 요청.body.ig_title, 날짜 : 요청.body.ig_data } , function(){    
-        console.log('저장완료 c32-2');
-      });
-    });
-
-
-  // perform actions on the collection object
-  client.close();
-
-  app.listen(3000, function(){
-    console.log('c30 listening on 3000')
-  });
-});
-
-// 🌊 실습코드 끝------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   //🦄🦄c32 HTML에 DB데이터 넣는 법 1, EJS 파일 만들기 
-//   console.log('🦄🦄🦄🦄c13')
-//   // 👉views/list.ejs
-
-//   /*2) 숙제해설 :
-//   -2) 누군가 /add 경로로 POST 요청을 하면, 폼에 입력된 자료를 2개가 서버로 도착합니다.
-
-//   -4) 이 때 자료 2개를 post라는 이름의 collection에 저장해보도록 합시다.
-
-//   { 제목 : ‘어쩌구’, 날짜 : ‘어쩌구’ } 이런 Object 자료형으로 저장하시면 되겠습니다.
-
-//   참고 : c9 .. post  */
-
-//     // app.post('/add', function(요청, 응답){    //2-2)
-//     //   응답.send('전송완료13');
-//     //   console.log(요청.body.ig_title);
-//     //   console.log(요청.body.ig_data);
-      
-//     //   //2-4)
-//     //   db.collection('post').insertOne( { 제목 : 요청.body.ig_title, 날짜 : 요청.body.ig_data } , function(){    
-//     //     console.log('저장완료13-2');
-//     //   });
-//     // });
 
