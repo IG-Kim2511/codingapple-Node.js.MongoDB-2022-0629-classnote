@@ -42,11 +42,20 @@ app.use(bodyParser.urlencoded({extended: true}))
           
   */
 
- //🦄🦄 참고 : w3school - node.js
- 
- //🦄🦄 참고 : https://www.mongodb.com/docs/manual/reference/method/db.collection.aggregate/
+  /* 🦄🦄 참고  
+    w3school - node.js
+      
+    https://www.mongodb.com/docs/manual/reference/method/db.collection.aggregate/
 
-//🦄🦄 참고 : npmjs.com
+    npmjs.com    
+  */
+
+
+/* 🦄🦄 에러해결 - me  
+  10) 접속이 안됨... :   비밀번호 랜덤생성했을때 접속성공함
+
+  20) 코드는 다 맞고, console.log에도 데이터 제대로 다 적용이 됬는데, mongodb사이트에는 안보임 : 그냥 mongodb사이트 재로그인해서 해결
+*/
 
 
 // 🦄🦄c16 npm에러해결, package.json, npm init, npm install express(Node.js, Express라이브러리 설치)
