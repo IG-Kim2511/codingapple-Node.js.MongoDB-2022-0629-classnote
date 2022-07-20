@@ -43,9 +43,9 @@ app.use(bodyParser.urlencoded({extended: true}))
   require('dotenv').config({path: "./env_c64/.env"})
 */
 
-// 🦄🦄me- terminal 명령어 정리 👉 codingapple-Node.js.MongoDB-2022-0629-classnote폴더...server.js
+// 🦄🦄me- terminal 명령어, 파일위치 정리 (👉codingapple-Node.js.MongoDB-2022-0629-classnote폴더...server.js)
 /* 
- 🦄🦄c12 express 라이브러리 설치
+  🦄🦄c12 express 라이브러리 설치
         $npm init
         $npm install express
 
@@ -54,39 +54,51 @@ app.use(bodyParser.urlencoded({extended: true}))
 
   서버 끄기 : ctrl +c
 
-    🦄🦄c18 nodemon 자동 미리보기
+  🦄🦄c18 nodemon 자동 미리보기
   $npm install -g nodemon (yarn add global nodemon)
 
   $nodemon server.js 
 
-    🦄🦄c24 body-parser 라이브러리 설치
+  🦄🦄c24 body-parser 라이브러리 설치
   $npm install body-parser 혹은 yarn add body-parser
 
-  
-    🦄🦄c28 mongodb 라이브러리 설치        
-    npm install mongodb
 
-    🦄🦄c32 EJS 
-    npm install ejs
+  🦄🦄c28 mongodb 라이브러리 설치        
+  npm install mongodb
 
-    🦄🦄c52 method-override
-    npm install method-override
+  🦄🦄c32 EJS 
+  👉./views/~~.ejs
+  npm install ejs
 
-    🦄🦄c58 passport, passport-local, express-session,
-    npm install passport, passport-local, express-session
+  🦄🦄c52 method-override
+  npm install method-override
 
-    🦄🦄c64 dot env
-    npm install dotenv
-          
-  */
+  🦄🦄c58 passport, passport-local, express-session,
+  npm install passport, passport-local, express-session
 
-  /* 🦄🦄 참고  
-    w3school - node.js
-      
-    https://www.mongodb.com/docs/manual/reference/method/db.collection.aggregate/
+  🦄🦄c64 dot env
+  👉./env_c64/.env
+  npm install dotenv
 
-    npmjs.com    
-  */
+  🦄🦄c74 router관리, router.get(주소, 미들웨어, 함수), router.use(미들웨어)
+  👉 ./routes/shop_c74.js
+  👉 ./routes/zoo_c74.js
+
+
+  🦄🦄c76
+  👉app.yaml
+  🍀gcloud init
+  🍀gcloud app deploy
+        
+*/
+
+/* 🦄🦄 참고  
+  w3school - node.js
+    
+  https://www.mongodb.com/docs/manual/reference/method/db.collection.aggregate/
+
+  npmjs.com    
+*/
 
 
 /* 🦄🦄me- 에러해결 
@@ -122,12 +134,14 @@ listen() 함수 안엔 두개의 파라미터가 필요합니다.
 
 listen(서버를 오픈할 포트번호, function(){서버 오픈시 실행할 코드})
 
+5) 8080포트 쓰면 편함 - 구글 클라우드서비스 디폴트값 👉 c76
 
 
 */
 
 // 🌊실습코드 시작 ------ 다음 수업에 중첩되서 일단 코멘트 처리
 // (👉 c28 mongoDB코드로 옮김)
+
 
 // app.listen(3000, function() {   
 //   console.log('listening on 3000')
