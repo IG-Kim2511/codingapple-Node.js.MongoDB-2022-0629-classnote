@@ -1,6 +1,7 @@
 
 /* 🍀 Server.js 상단 코드 */
 
+// require(~) : ~파일, ~라이브러리을 가져와서(import) 쓰겠다는 뜻
 // c18 express
 const express = require('express')
 const app = express()
@@ -10,8 +11,39 @@ const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({extended: true})) 
 
 
+/* 🍀me - next 수업에 나올 상단 코드 정리
 
-// 🦄🦄 terminal 명령어 정리 👉 codingapple-Node.js.MongoDB-2022-0629-classnote폴더...server.js
+  // c30)
+  const MongoClient = require('mongodb').MongoClient;
+
+  // c32) 
+  app.set('view engine', 'ejs');
+
+  // c50)  static 파일 보관위해 public폴더 쓸거라는 뜻
+  app.use('/public_c50', express.static('public_c50'));
+
+  // c52)  method-override
+  var methodOverride = require('method-override');
+  const passport = require('passport');
+  app.use(methodOverride('_method'))
+
+  // 🍀c58-10)
+  // const passport = require('passport');
+  const LocalStrategy = require('passport-local').Strategy;
+  const session = require('express-session');
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(session({ secret: 'ingyum123', resave: true, saveUninitialized: false }));
+
+
+  // c64) .env 파일, environment variable, 
+  // root folder에 .env파일 만들때 : require('dotenv').config()
+  // 다른 folder(env_c64)에 .env파일 만들때 : require('dotenv').config({path: "./env_c64/.env"})
+  require('dotenv').config({path: "./env_c64/.env"})
+*/
+
+// 🦄🦄me- terminal 명령어 정리 👉 codingapple-Node.js.MongoDB-2022-0629-classnote폴더...server.js
 /* 
  🦄🦄c12 express 라이브러리 설치
         $npm init
@@ -37,8 +69,14 @@ app.use(bodyParser.urlencoded({extended: true}))
     🦄🦄c32 EJS 
     npm install ejs
 
-    🦄🦄c method-override
+    🦄🦄c52 method-override
     npm install method-override
+
+    🦄🦄c58 passport, passport-local, express-session,
+    npm install passport, passport-local, express-session
+
+    🦄🦄c64 dot env
+    npm install dotenv
           
   */
 
@@ -51,7 +89,7 @@ app.use(bodyParser.urlencoded({extended: true}))
   */
 
 
-/* 🦄🦄 에러해결 - me  
+/* 🦄🦄me- 에러해결 
   10) 접속이 안됨... :   비밀번호 랜덤생성했을때 접속성공함
 
   20) 코드는 다 맞고, console.log에도 데이터 제대로 다 적용이 됬는데, mongodb사이트에는 안보임 : 그냥 mongodb사이트 재로그인해서 해결
