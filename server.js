@@ -89,6 +89,11 @@ app.use(bodyParser.urlencoded({extended: true}))
   👉app.yaml
   🍀gcloud init
   🍀gcloud app deploy
+
+
+  🦄🦄c78
+  👉./public/image
+   npm install multer
         
 */
 
@@ -226,13 +231,14 @@ app.get('/', function(req요청, res응답) {               //2)
 // 6) css 적용하기 (me...구글검색) ⚡
 
 app.get('/style.css', function(req, res) {
-    res.sendFile(__dirname + "/" + "style.css");
+    res.sendFile(__dirname + '/style.css') 
+    // res.sendFile(__dirname + "/" + "style.css");
 });
 
 
 
 
-// 🦄🦄c24 POST요청 app.post('/add',(res,req)=>{}), body-parser (입력한 데이터를 서버에 전송하는 법)
+// 🦄🦄c24 POST요청 app.post('/add',(res,req)=>{}), body-parser(POST요청으로 서버에 데이터 전송 쉽게해주는 라이브러리 : body-parser, form, input, name)
 // 👉write.html
 console.log('🦄🦄🦄🦄c9')
 
@@ -253,7 +259,9 @@ app.get('/write',(req요청,res응답)=>{       //2, 2-1)
 -3. ??을 해주세요 */
 
 
-/* 5)form 데이터를 서버로 전송하기 - body-parser 설치 
+/* 5)form 데이터를 서버로 전송하기 
+- body-parser 설치 
+: POST요청으로 서버에 데이터 전송 쉽게해주는 라이브러리 : body-parser, form, input, name
 ( http://expressjs.com/en/resources/middleware/body-parser.html )
 
 5-2)
